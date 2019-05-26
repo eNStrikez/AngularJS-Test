@@ -1,0 +1,51 @@
+<html lang="en" >
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
+		<link rel="stylesheet" href="style.css">
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+		<script src="script.js"></script>
+	</head>
+	<body ng-app="app" ng-controller="weaponController" ng-cloak>
+		<md-card>
+			<md-card-header>
+	        	<md-card-avatar>
+	            	<img class="md-user-avatar" ng-src="{{path + weapon.displayProperties.icon}}"/>
+	          	</md-card-avatar>
+	          	<md-card-header-text>
+	            	<span class="md-title">{{weapon.displayProperties.name}}</span>
+	            	<span class="md-subhead">{{weapon.displayProperties.description}}</span>
+	          	</md-card-header-text>
+	        </md-card-header>
+			<img ng-src="{{path + weapon.screenshot}}" class="md-card-image"/>
+			<md-card-title>
+				<md-card-title-text layout="row" layout-align="start center">
+					<div ng-repeat="e in elements | getElement:weapon">
+              			<img class="element" ng-src="{{path + e.displayProperties.icon}}"/>
+            		</div>
+					<span class="md-headline">{{weapon.itemTypeDisplayName}}</span>
+				</md-card-title-text>
+				<span class="md-subhead">{{weapon.inventory.tierTypeName}}</span>
+			</md-card-title>
+
+			<md-card-content>
+				<md-list flex="">
+                <md-list-item ng-repeat="perk in sockets | getArray">
+                	<img class="element" ng-src="{{path + perk.displayProperties.icon}}"/>
+                    <div class="md-list-item-text" layout="column">
+                    	<span class="md-title">{{perk.displayProperties.name}}</span>
+	            		<span class="md-subhead">{{perk.displayProperties.description}}</span>
+                	</div>
+                </md-list-item>
+            <md-list>  
+			</md-card-content>
+
+
+		</md-card>
+	</body>
+</html>
